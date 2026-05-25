@@ -1,0 +1,44 @@
+int redLED = 26;
+int yellowLED = 25;
+int greenLED = 33;
+
+unsigned long lastChange = 0;
+const int interval = 5000;
+
+void setup() {
+  Serial.begin(115200);
+
+  pinMode(redLED, OUTPUT);
+  pinMode(yellowLED, OUTPUT);
+  pinMode(greenLED, OUTPUT);
+
+  randomSeed(analogRead(0));
+}
+
+void setColor(int state) {
+  digitalWrite(redLED, LOW);
+  digitalWrite(yellowLED, LOW);
+  digitalWrite(greenLED, LOW);
+
+  if (state == 0) {
+    digitalWrite(greenLED, HIGH);
+    Serial.println("GOOD");
+  } 
+  else if (state == 1) {
+    digitalWrite(yellowLED, HIGH);
+    Serial.println("MEDIUM");
+  } 
+  else {
+    digitalWrite(redLED, HIGH);
+    Serial.println("BAD");
+  }
+}
+
+void loop() {
+  if (millis() - lastChange > interval) {
+    lastChange = millis();
+
+    int state = random(0, 3);
+    setColor(state);
+  }
+}

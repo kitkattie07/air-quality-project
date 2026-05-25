@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "author": "Air Quality Prototype",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 0, "left": 0 },
+
+    { "type": "wokwi-led", "id": "red", "top": -40, "left": 200, "attrs": { "color": "red" } },
+    { "type": "wokwi-led", "id": "yellow", "top": 0, "left": 200, "attrs": { "color": "yellow" } },
+    { "type": "wokwi-led", "id": "green", "top": 40, "left": 200, "attrs": { "color": "green" } }
+  ],
+  "connections": [
+    ["esp:26", "red:A", "red"],
+    ["esp:25", "yellow:A", "yellow"],
+    ["esp:33", "green:A", "green"],
+
+    ["esp:GND.1", "red:C", "black"],
+    ["esp:GND.1", "yellow:C", "black"],
+    ["esp:GND.1", "green:C", "black"]
+  ]
+}
